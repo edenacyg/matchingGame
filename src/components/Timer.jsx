@@ -1,11 +1,10 @@
 import React, { useState, useEffect } from 'react';
 
-const Timer = ({ isStart, wins }) => {
+const Timer = ({ isStart, wins, seconds, setSeconds }) => {
 	console.log(isStart);
 	console.log(wins);
-	const [seconds, setSeconds] = useState(0);
-	const [timeSpent, setTimeSpent] = useState(0);
-	const [bestTime, setBestTime] = useState(0);
+	const [timeSpent, setTimeSpent] = useState(0); //Elapsed time
+	const [bestTime, setBestTime] = useState(0); //Fastest time
 
 	useEffect(() => {
 		let timer;
@@ -24,20 +23,28 @@ const Timer = ({ isStart, wins }) => {
 		if (wins > 0) {
 			setTimeSpent(seconds);
 
-			if (seconds != 0 && seconds < timeSpent) { 
+			if (bestTime === 0){
 				setBestTime(seconds);
-			}
-		  	setSeconds(0);
+				setSeconds(0);	
+			} else {
+				if (seconds !== 0 && seconds < timeSpent) { 
+					setBestTime(seconds);
+				}
+					setSeconds(0);	
+			}		
+		} else {
+			setBestTime(0);
+			setTimeSpent(0);
 		}
 	  }, [wins]);
 
 	return (
-		<div>
-			<h2>Timer: {seconds} seconds</h2>
-			<h2>Time Elapsed: {timeSpent} seconds</h2>
-			<h2>Best Time: {bestTime} seconds</h2>
+		<div className='timer'>
+			<p>Timer: {seconds} secs</p>
+			<p>Best Player: {bestTime} secs</p>
 		</div>
 	);
 };
 
 export default Timer;
+
