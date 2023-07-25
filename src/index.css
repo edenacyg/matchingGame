@@ -88,7 +88,7 @@ button:hover {
 	transition: var(--transition);
 }
 
-/* ========= Grid ========================= */
+/* ========= Timer ========================= */
 .timer {
 	border: none;
 	outline: none;
@@ -102,6 +102,24 @@ button:hover {
 	display: flex;
 	justify-content: space-between;
 }
+
+/* ========= Best Player ========================= */
+.best-player {
+	font-weight: 600;
+	animation: zoomEffect 1s;
+  }
+
+@keyframes zoomEffect {
+	0% {
+	  transform: scale(1);
+	}
+	50% {
+	  transform: scale(1.2);
+	}
+	100% {
+	  transform: scale(1);
+}
+  }
 
 /* ========= Grid ========================= */
 .grid {

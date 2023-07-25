@@ -16,6 +16,7 @@ function App() {
 	const [setBadge, clearBadge] = useAppBadge(); //Handles App Badge
 	const [isStart, setStart] = useState(false); //Start
 	const [seconds, setSeconds] = useState(0); //Timer
+	const [isBestPlayer, setBestPlayer] = useState(false); //Fastest time
 	
 	//Handle Card Selections
 	const handleClick = (card) => {
@@ -39,6 +40,7 @@ function App() {
 		setCards(shuffle);
 		setSeconds(0);
 		setStart(false);
+		setBestPlayer(false);
 	};
 
 	useEffect(() => {
@@ -84,7 +86,7 @@ function App() {
 
 	return (
 		<>
-			<Timer isStart={isStart} wins={wins} seconds={seconds} setSeconds={setSeconds} />
+			<Timer isStart={isStart} wins={wins} seconds={seconds} setSeconds={setSeconds} isBestPlayer={isBestPlayer} setBestPlayer={setBestPlayer}/>
 			<Header handleNewGame={handleNewGame} wins={wins} />
 
 			<div className="grid">

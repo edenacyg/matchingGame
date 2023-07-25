@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 
-const Timer = ({ isStart, wins, seconds, setSeconds }) => {
+const Timer = ({ isStart, wins, seconds, setSeconds, isBestPlayer, setBestPlayer }) => {
 	console.log(isStart);
 	console.log(wins);
 	const [timeSpent, setTimeSpent] = useState(0); //Elapsed time
@@ -29,6 +29,9 @@ const Timer = ({ isStart, wins, seconds, setSeconds }) => {
 			} else {
 				if (seconds !== 0 && seconds < timeSpent) { 
 					setBestTime(seconds);
+					setBestPlayer(true);
+				} else {
+					setBestPlayer(false);
 				}
 					setSeconds(0);	
 			}		
@@ -41,7 +44,7 @@ const Timer = ({ isStart, wins, seconds, setSeconds }) => {
 	return (
 		<div className='timer'>
 			<p>Timer: {seconds} secs</p>
-			<p>Best Player: {bestTime} secs</p>
+			<p className={isBestPlayer ? "best-player" : ""}>Best Player: {bestTime} secs</p>
 		</div>
 	);
 };
